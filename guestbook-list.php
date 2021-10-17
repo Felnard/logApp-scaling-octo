@@ -1,7 +1,9 @@
 <?php
-    require('config/config.php');
+
+    require('config/config.php'); //para import ulit data from config
     require('config/db.php');
 
+    //para maprint sa webpage
     $query = 'SELECT * FROM person';
     $result = mysqli_query($conn,$query);
     $persons = mysqli_fetch_all($result, MYSQLI_ASSOC);

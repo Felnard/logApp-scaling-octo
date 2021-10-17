@@ -1,7 +1,4 @@
 <?php
-    if(isset($_POST['submit'])){
-      header('Location: guestbook-list.php');
-    }
 ?>
 <?php include('inc/header.php'); ?>
   <br/>

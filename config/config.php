@@ -1,4 +1,6 @@
 <?php
+
+	//Mga data para makaconnect, pwede magiba per user
 	define('ROOT_URL', '');
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
