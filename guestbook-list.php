@@ -2,6 +2,7 @@
 
     require('config/config.php'); //para import ulit data from config
     require('config/db.php');
+ 
 
     //para maprint sa webpage
     $query = 'SELECT * FROM person';
@@ -9,6 +10,7 @@
     $persons = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_free_result($result);
     mysqli_close($conn);
+
 
 ?>
 

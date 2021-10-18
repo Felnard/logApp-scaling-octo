@@ -1,4 +1,30 @@
 <?php
+ 
+  require('config/config.php');
+  require('config/db.php');
+
+  session_start();
+
+  // Check the submitted info
+    if(isset($_POST['submit'])){
+        $user = mysqli_real_escape_string($conn,$_POST['username']);
+        $pass = mysqli_real_escape_string($conn,$_POST['password']);
+    }
+    
+  //check if the user exist on the database 
+    $query = "SELECT `username`, `password` FROM `accounts` WHERE username = '$user' AND password = '$pass'";
+    
+  // if user exist   shift to guestbook list
+    if(mysqli_query($conn,$query)){
+      $_SESSION['user_name'] = $user;
+      $_SESSION['pass'] = $pass;
+      header('Location: guestbook-list.php');
+      exit;
+		} else {
+			echo 'ERROR: Incorrect Username and Password '. mysqli_error($conn);
+		}
+  
+   
 ?>
 <?php include('inc/header.php'); ?>
   <br/>
