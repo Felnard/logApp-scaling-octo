@@ -1,30 +1,22 @@
 <?php
- 
+  
   require('config/config.php');
   require('config/db.php');
 
-  session_start();
+  $username = isset($_POST['username'])? $_POST['username']: '';
+  $password = isset($_POST['password'])? $_POST['password']: '';
 
-  // Check the submitted info
-    if(isset($_POST['submit'])){
-        $user = mysqli_real_escape_string($conn,$_POST['username']);
-        $pass = mysqli_real_escape_string($conn,$_POST['password']);
-    }
-    
-  //check if the user exist on the database 
-    $query = "SELECT `username`, `password` FROM `accounts` WHERE username = '$user' AND password = '$pass'";
-    
-  // if user exist   shift to guestbook list
-    if(mysqli_query($conn,$query)){
-      $_SESSION['user_name'] = $user;
-      $_SESSION['pass'] = $pass;
-      header('Location: guestbook-list.php');
-      exit;
-		} else {
-			echo 'ERROR: Incorrect Username and Password '. mysqli_error($conn);
-		}
-  
-   
+  $query = 'SELECT * FROM accounts';
+  $result = mysqli_query($conn,$query);
+  $admins = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  mysqli_free_result($result);
+  mysqli_close($conn);
+
+foreach($admins as $admin){
+  if($admin['username'] == $username && $admin['password'] == $password){
+    header('Location: guestbook-list.php');
+  }
+}
 ?>
 <?php include('inc/header.php'); ?>
   <br/>
