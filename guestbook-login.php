@@ -11,13 +11,25 @@
   $admins = mysqli_fetch_all($result, MYSQLI_ASSOC);
   mysqli_free_result($result);
   mysqli_close($conn);
+  $error = " ";
 
-foreach($admins as $admin){
-  if($admin['username'] == $username && $admin['password'] == $password){
-    header('Location: guestbook-list.php');
-  }
-}
+
+  if (!empty($_POST['username']) && !empty($_POST['password'])) 
+      {
+        foreach($admins as $admin){
+          if($admin['username'] != ($username) || $admin['password'] != ($password))
+                {$error = "Incorrect Username or Password.";}
+        }
+      }
+       foreach($admins as $admin){
+             if($admin['username'] == ($username) && $admin['password'] == ($password))
+            { 
+              header('Location: guestbook-list.php');
+            } 
+          };
+          
 ?>
+  
 <?php include('inc/header.php'); ?>
   <br/>
   <div style="width:30%; margin: auto; text-align: center;">
@@ -37,4 +49,5 @@ foreach($admins as $admin){
 
     </form>
   </div>
+  <?php echo $error; ?>
 <?php include('inc/footer.php'); ?>
