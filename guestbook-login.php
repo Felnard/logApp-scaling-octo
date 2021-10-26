@@ -21,12 +21,12 @@
                 {$error = "Incorrect Username or Password.";}
         }
       }
-       foreach($admins as $admin){
-             if($admin['username'] == ($username) && $admin['password'] == ($password))
+ foreach($admins as $admin){
+         if($admin['username'] == ($username) && $admin['password'] == ($password))
             { 
               header('Location: guestbook-list.php');
             } 
-          };
+      };
           
 ?>
   
@@ -46,8 +46,8 @@
         </label>
       </div>
       <button type="submit" name="submit" value="Submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-
+      <?php echo $error; ?>
     </form>
   </div>
-  <?php echo $error; ?>
+
 <?php include('inc/footer.php'); ?>
