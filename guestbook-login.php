@@ -6,7 +6,7 @@
   $username = isset($_POST['username'])? $_POST['username']: '';
   $password = isset($_POST['password'])? $_POST['password']: '';
 
-  $query = 'SELECT * FROM accounts';
+  $query = 'SELECT * FROM USERACCOUNT';
   $result = mysqli_query($conn,$query);
   $admins = mysqli_fetch_all($result, MYSQLI_ASSOC);
   mysqli_free_result($result);
