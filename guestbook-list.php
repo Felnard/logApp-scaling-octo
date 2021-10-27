@@ -5,12 +5,11 @@
  
 
     //para maprint sa webpage
-    $query = 'SELECT * FROM PERSON';
+    $query = 'SELECT * FROM person';
     $result = mysqli_query($conn,$query);
     $persons = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_free_result($result);
     mysqli_close($conn);
-
 
 ?>
 
@@ -33,11 +32,11 @@
                 <tbody>
                 <?php foreach($persons as $person) : ?>
                     <tr>
-                    <th scope="row"><?php echo $person['pid'];?></th>
-                    <td><?php echo $person['lastname'];?></td>
-                    <td><?php echo $person['firstname'];?></td>
+                    <th scope="row"><?php echo $person['id'];?></th>
+                    <td><?php echo $person['lastName'];?></td>
+                    <td><?php echo $person['firstName'];?></td>
                     <td><?php echo $person['address'];?></td>
-                    <td><?php echo $person['logdt'];?></td>
+                    <td><?php echo $person['createdAt'];?></td>
                     </tr>
                 <?php endforeach; ?>   
                 </tbody>
@@ -45,6 +44,6 @@
         </table>
         <br/>
 
-            <button type="button" class="btn btn-dark btn-sm" onclick="document.location='guestbook-login.php'">Logout</button>
+            <button type="button" class="btn btn-dark btn-sm"  onclick="document.location='guestbook-login.php'">Logout</button>
 </div>
 <?php include('inc/footer.php'); ?>

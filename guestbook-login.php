@@ -6,7 +6,7 @@
   $username = isset($_POST['username'])? $_POST['username']: '';
   $password = isset($_POST['password'])? $_POST['password']: '';
 
-  $query = 'SELECT * FROM USERACCOUNT';
+  $query = 'SELECT * FROM accounts';
   $result = mysqli_query($conn,$query);
   $admins = mysqli_fetch_all($result, MYSQLI_ASSOC);
   mysqli_free_result($result);
@@ -16,17 +16,17 @@
 
   if (!empty($_POST['username']) && !empty($_POST['password'])) 
       {
-        foreach($admins as $admin){
+        foreach($admins as $admin)
+        {
           if($admin['username'] != ($username) || $admin['password'] != ($password))
                 {$error = "Incorrect Username or Password.";}
         }
       }
- foreach($admins as $admin){
-         if($admin['username'] == ($username) && $admin['password'] == ($password))
-            { 
-              header('Location: guestbook-list.php');
-            } 
-      };
+  foreach($admins as $admin)
+        {
+          if($admin['username'] == ($username) && $admin['password'] == ($password))
+            { header('Location: guestbook-list.php');} 
+        };
           
 ?>
   
@@ -49,5 +49,5 @@
       <?php echo $error; ?>
     </form>
   </div>
-
+ 
 <?php include('inc/footer.php'); ?>
