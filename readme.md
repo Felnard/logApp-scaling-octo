@@ -24,7 +24,7 @@ During this pandemic, we usually encounter logbooks in malls, stores, schools, a
 
 ### Clone my repository
 
-1. Copy and paste this on your cmd. git clone (name of my repository)
+1. Copy and paste this on your cmd. git clone (link of my repository)
 2. Then move the file here (C:\xampp\htdocs) to run for our XAMPP but it may vary depending where you install your XAMPP
 
 ### Run XAMPP
